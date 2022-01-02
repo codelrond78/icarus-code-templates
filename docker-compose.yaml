@@ -1,0 +1,48 @@
+# dev project calculadora solar
+version: "3.3"
+services:
+  couchdb:
+    image: couchdb
+    ports:
+      - "5985:5984"
+    environment:
+      COUCHDB_USER: admin
+      COUCHDB_PASSWORD: 123
+  frontend:
+    image: icarus/code-node:14
+    ports:
+      - "9002:8080"
+      - "3000:3000"
+    environment:
+      REPO: git@github.com:codelrond78/calculadorasolar.git
+      GIT_USER: codelrond
+      GIT_USER_EMAIL: codelrond@protonmail.com
+      BRANCH: v4.2
+      PASSWORD: "123"
+    volumes:
+      - ~/.ssh:/root/.ssh:ro
+      - settings:/root/.local/share/code-server
+      - /workspacesv2/solar/frontend:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+  backend:
+    image: icarus/code-rust-python
+    ports:
+      - "9001:8080"
+      - "5000:5000"
+    environment:
+      REPO: git@github.com:codelrond78/solar-rust-web-server.git
+      GIT_USER: codelrond
+      GIT_USER_EMAIL: codelrond@protonmail.com
+      BRANCH: v4.2
+      PASSWORD: "123"
+    volumes:
+      - ~/.ssh:/root/.ssh:ro
+      - settings:/root/.local/share/code-server
+      - /workspacesv2/solar/backend:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+    #vcalculadorasolarapp:
+    #vcalculadorasolarbackend:
+    settings:
+      external: true
+
