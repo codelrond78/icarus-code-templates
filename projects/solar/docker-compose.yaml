@@ -22,7 +22,7 @@ services:
     volumes:
       - ~/.ssh:/root/.ssh:ro
       - settings:/root/.local/share/code-server
-      - /workspacesv2/solar/frontend:/app
+      - vcalculadorasolarfrontend:/app
       - /var/run/docker.sock:/var/run/docker.sock
   backend:
     image: icarus/code-rust-python
@@ -38,11 +38,11 @@ services:
     volumes:
       - ~/.ssh:/root/.ssh:ro
       - settings:/root/.local/share/code-server
-      - /workspacesv2/solar/backend:/app
+      - vcalculadorasolarbackend:/app
       - /var/run/docker.sock:/var/run/docker.sock
 volumes:
-    #vcalculadorasolarapp:
-    #vcalculadorasolarbackend:
+    vcalculadorasolarfrontend:
+    vcalculadorasolarbackend:
     settings:
       external: true
 
