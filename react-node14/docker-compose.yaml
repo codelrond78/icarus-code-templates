@@ -1,0 +1,13 @@
+version: "3"
+services:
+  code:
+    image: icarus/code-react-node:14
+    environment:
+      #- REPO=https://github.com/libgit2/libgit2
+      - GIT_USER=codelrond
+      - GIT_USER_EMAIL=codelrond@protonmail.com
+      - PASSWORD=123
+    ports:
+      - 8080
+      - 3000
+
