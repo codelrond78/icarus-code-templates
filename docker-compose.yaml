@@ -1,7 +1,7 @@
 #icarus project
 version: "3.3"
 services:
-  back:
+  backend:
     image: icarus/code-node:14
     ports:
       - "9080:8080"
@@ -17,7 +17,7 @@ services:
       - settings:/root/.local/share/code-server
       - vback:/app
       - /var/run/docker.sock:/var/run/docker.sock
-  front:
+  frontend:
     image: icarus/code-node:14
     ports:
       - "9081:8080"
