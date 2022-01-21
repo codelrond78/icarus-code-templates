@@ -24,5 +24,11 @@ else
     fi
 fi
 
+ICARUSINI=/app/icarus.ini
+if test -f "$ICARUSINI"; then
+    chmod u+x $ICARUSINI
+    ./$ICARUSINI > /app/icarus.log 2>&1 &
+fi
+
 code-server --auth password --bind-addr 0.0.0.0:8080 /app
 
